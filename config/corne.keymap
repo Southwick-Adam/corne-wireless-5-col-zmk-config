@@ -8,83 +8,224 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-
-#define AS(keycode) &as LS(keycode) keycode
+// LAYERS
+#define DEFAULT 0
+#define NUM     1
+#define SYM     2
+#define VIM     3
+#define FUNC    4
+#define GAME    5
 
 / {
-    chosen {
-        zmk,physical-layout = &foostan_corne_5col_layout;
-    };
-
-    behaviors {
-        as: auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping_term_ms = <200>;
-            quick_tap_ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+        chosen {
+                zmk,physical-layout = &foostan_corne_5col_layout;
         };
-    };
+
+
+        behaviors {
+                kp_to: kp_to {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        bindings = <&kp>, <&to>;
+                        tapping-term-ms = <200>;
+                };
+
+                mo_to: mo_to {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        bindings = <&mo>, <&to>;
+                        tapping-term-ms = <200>;
+                };
+        };
+
+
+        macros {
+                fname: fname {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_press &kp LSHFT>
+                        , <&macro_tap &kp A>
+                        , <&macro_release &kp LSHFT>
+                        , <&macro_tap &kp D &kp A &kp M>
+                        ;
+                };
+
+                lname: lname {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_press &kp LSHFT>
+                        , <&macro_tap &kp S>
+                        , <&macro_release &kp LSHFT>
+                        , <&macro_tap &kp O &kp U &kp T &kp H &kp W &kp I &kp C &kp K>
+                        ;
+                };
+
+                email: email {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp A &kp D &kp A &kp M>
+                        , <&macro_tap &kp S &kp O &kp U &kp T &kp H &kp W &kp I &kp C &kp K>
+                        , <&macro_tap &kp AT &kp G &kp M &kp A &kp I &kp L>
+                        , <&macro_tap &kp DOT &kp C &kp O &kp M>
+                        ;
+                };
+
+                mouse_keys: mouse_keys {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp LALT &kp LALT &kp LALT &kp LALT &kp LALT >
+                        ;
+                }; 
+
+                CIW: CIW {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp C &kp I &kp W >
+                        ;
+                };
+
+                vim_i: vim_i {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp I &to DEFAULT >
+                        ;
+                };
+
+                vim_a: vim_a {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp I &to DEFAULT >
+                        ;
+                };
+
+                go_vim: go_vim {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp ESC &to VIM >
+                        ;
+                };     
+        };
+
+
+        combos {
+                compatible = "zmk,combos";
+                combo_caps {
+                timeout-ms = <50>;
+                layers = <0>;
+                key-positions = <39 40>;
+                bindings = <&kp CAPS>;
+                };
+
+                combo_func {
+                timeout-ms = <50>;
+                layers = <0 1 2 3 5>;
+                key-positions = <37 42>;
+                bindings = <&mo FUNC>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U   |  I   |  O   | P |
-// |  A  |  S  |  D  |  F  |  G  |     |  H  |  J   |  K   |  L   | ' | 
-// |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M   | CTRL | META | . |
-//             | GUI | LWR | SPC |     | ENT | RSE  | BSPC |
+//   |  Q  |  W  |  F  |  P  |  G  |    |  J  |  L  |  U  |  Y  | BSP |
+//   |  A  |  R  |  S  |  T  |  D  |    |  H  |  N  |  E  |  I  |  O  |
+//   |  Z  |  X  |  C  |  V  |  B  |    |  K  |  M  |  .  |  ,  |  ;  |
+//
+// | LSHIFT:TAB | CTRL:SPC | L0:L0 |    | L1:L1 | CMD:ENT | L3 |
+// -----------------------------------------------------------------------------------------
                         display-name = "Base";
                         bindings = <
-   AS(Q) AS(W) AS(E) AS(R) AS(T)     AS(Y)   AS(U)  AS(I)     AS(O)     AS(P)
-   AS(A) AS(S) AS(D) AS(F) AS(G)     AS(H)   AS(J)  AS(K)     AS(L)     AS(SQT)
-   AS(Z) AS(X) AS(C) AS(V) AS(B)     AS(N)   AS(M)  &kp LCTL  &kp RALT  AS(DOT)
-        &kp LGUI &mo 1 &kp SPACE     AS(RET) &mo 2  &kp BSPC
+&kp Q &kp W &kp F &kp P &kp G     &kp J &kp L &kp U &kp Y &kp BSPC
+&kp A &kp R &kp S &kp T &kp D     &kp H &kp N &kp E &kp I &kp O
+&kp Z &kp X &kp C &kp V &kp B     &kp K &kp M &kp DOT &kp COMMA &kp SEMI
+
+&mt LSHIFT TAB &mt LCTRL SPACE &mo_to DEFAULT DEFAULT   &mo_to NUM NUM  &mt LCMD RET &go_vim
                         >;
                 };
 
-                lower_layer {
+                num_layer {
 // -----------------------------------------------------------------------------------------
-// | !     |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |
-// | BT1   | BT2 | BT3 | BT4 | BT5 |     | LFT | DWN |  UP | RGT |     |
-// | BTCLR |     |     |     |     |     |     |     |     |     |     |
-//               | GUI |     | SPC |     | ENT | ESC | TAB |
-                        display-name = "Lower";
-                        bindings = <
-   &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT        &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR
-   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &trans 
-   &bt BT_CLR   &trans       &trans       &trans       &trans           &trans    &trans    &trans          &trans    &trans 
-                             &kp LGUI     &trans       &kp SPACE        AS(RET)   &kp ESC   &kp TAB
-                        >;
-                };
-
-                raise_layer {
+//   | pg_up |  1  |  2  |  3  |  '  |    |  -  |  !  |  [  |  ]  | BSP |
+//   |   L2  |  4  |  5  |  6  |  0  |    |  +  |  =  |  (  |  )  |  _  |
+//   | pg_dn |  7  |  8  |  9  |  .  |    |  *  |  /  |  <  |  >  |mouse_keys|
 // -----------------------------------------------------------------------------------------
-// | 1! |  2@ |  3# |  4$ |  5% |     |  6^ |  7& |  8* |  9(  |  0)  |
-// | -_ |  =+ |  {  |  [  |  (  |     |  )  |  ]  |  }  |  /?  |  \|  |
-// | `~ |     |     |  ,< |  :  |     |  ;  |  .> | CTRL| META |      |
-//            | GUI | ESC | SPC |     | ENT |     | TAB |
-                        display-name = "Raise";
                         bindings = <
+&kp PG_UP &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp SQT    &kp MINUS &kp EXCL &kp LBKT &kp RBKT &kp BSPC
+&mo SYM   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0  &kp PLUS &kp EQUAL &kp LPAR &kp RPAR &kp UNDER
+&kp PG_DN &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp DOT    &kp ASTRK &kp BSLH  &kp LT &kp GT &mouse_keys
 
-   AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)    AS(N7)    AS(N8)    AS(N9)   AS(N0)
-   AS(MINUS) AS(EQUAL) &kp LBRC  &kp LBKT  &kp LPAR      &kp RPAR  &kp RBKT  &kp RBRC  AS(FSLH) AS(BSLH)
-   AS(GRAVE) &trans    &trans    AS(COMMA) &kp COLON     &kp SEMI  AS(DOT)   &kp LCTRL &kp RALT &trans
-                       &kp LGUI  &kp ESC   &kp SPACE     AS(RET)   &trans    &kp TAB
+&trans &trans &trans    &trans &trans &trans
                         >;
                 };
 
-                extra_1 {
-                        status = "reserved";
+                sym_layer {
+// -----------------------------------------------------------------------------------------
+//   |                          |    |  #  |  @  |  ?  |  ~  | BSP |
+//   |           trans          |    |  $  |  &  |  {  |  }  |  `  |
+//   |                          |    |  %  |  ^  |  \  |  |  | none|
+// -----------------------------------------------------------------------------------------
+                        bindings = <
+&none &trans &trans &trans &trans   &kp HASH &kp AT &kp QMARK &kp TILDE &kp BSPC
+&none &trans &trans &trans &trans   &kp DLLR &kp AMPS &kp LBRC &kp RBRC &kp GRAVE
+&none &trans &trans &trans &trans   &kp PRCNT &kp CARET &kp FSLH &kp PIPE &none
+
+&trans &trans &trans    &trans &trans &trans
+                        >;
                 };
 
-                extra_2 {
-                        status = "reserved";
+                vim_layer {
+// -----------------------------------------------------------------------------------------
+//   | ESC |  D  |  O  |  I  |  A   |    |   B  |   E  |  UP  |   W   |  }  |
+//   |  M  | CIW |  R  |  G  | CTRL |    |   F  | LEFT | DOWN | RIGHT |  {  |
+//   |  U  |  `  |  ~  |  Y  |  V   |    |   ^  |   %  |   Z  |   $   |  .  |
+// -----------------------------------------------------------------------------------------
+                        bindings = <
+&kp ESC &kp D &kp O &vim_i &vim_a       &kp B &kp E &kp UP &kp W &kp RBRC
+&kp M &CIW &kp R &kp G &kp LCTRL        &kp F &kp LEFT &kp DOWN &kp RIGHT &kp LBRC
+&kp U &kp GRAVE &kp TILDE &kp Y &kp V   &kp CARET &kp PRCNT &kp Z &kp DLLR &kp DOT
+                        
+&trans &trans &trans    &trans &trans &kp ESC
+                        >;
                 };
 
-                extra_3 {
-                        status = "reserved";
+                func_layer {
+// -----------------------------------------------------------------------------------------
+//   | ESC | fname | lname | email |  |     | BRIGHT_DN | BRIGHT_UP | VOL_DN | VOL_UP | MUTE |
+//
+//                                                                                  | L5 |
+// -----------------------------------------------------------------------------------------
+                        bindings = <
+&kp ESC &fname &lname &email &none    &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE
+&trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans    &trans &trans &trans &trans &to GAME
+
+&trans &trans &trans    &trans &trans &trans
+                        >;
+                };
+
+                game_layer {
+// -----------------------------------------------------------------------------------------
+//   | ESC  |  Q  |  W  |  E  |  R  |    |   1  |   2  |  UP  |   3   |  4   |
+//   |   .  |  A  |  S  |  D  |  F  |    |   .  | LEFT | DOWN | RIGHT |  5   |
+//   |LSHIFT|  Z  |  X  |  C  |  V  |    |   I  |   J  |   M  |   T   |  6   |
+// -----------------------------------------------------------------------------------------
+                        bindings = <
+&kp ESC &kp Q &kp W &kp E &kp R    &kp N1 &kp N2 &kp UP &kp N3 &kp N4
+&none &kp A &kp S &kp D &kp F      &none &kp LEFT &kp DOWN &kp RIGHT &kp N5
+&kp LSHFT &kp Z &kp X &kp C &kp V  &kp I &kp J &kp M &kp T &kp N6
+
+&trans &trans &trans    &trans &trans &trans
+                        >;
                 };
         };
 };
