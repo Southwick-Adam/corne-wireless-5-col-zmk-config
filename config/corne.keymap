@@ -200,9 +200,9 @@
 
                 func_layer {
 // -----------------------------------------------------------------------------------------
-//   | ESC | fname | lname | email |  |     | BRIGHT_DN | BRIGHT_UP | VOL_DN | VOL_UP | MUTE |
+//   | ESC | fname | lname | email | . |     | BRIGHT_DN | BRIGHT_UP | VOL_DN | VOL_UP | MUTE |
 //
-//                                                                                  | L5 |
+//                                                                               | L5 |
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp ESC &fname &lname &email &none    &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE
