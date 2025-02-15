@@ -101,7 +101,7 @@
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
-                        = <&macro_tap &kp I &to DEFAULT >
+                        = <&macro_tap &kp A &to DEFAULT >
                         ;
                 };
 
@@ -120,14 +120,14 @@
                 combo_caps {
                 timeout-ms = <50>;
                 layers = <0>;
-                key-positions = <39 40>;
+                key-positions = <30 35>;
                 bindings = <&kp CAPS>;
                 };
 
                 combo_func {
                 timeout-ms = <50>;
                 layers = <0 1 2 3 5>;
-                key-positions = <37 42>;
+                key-positions = <32 33>;
                 bindings = <&mo FUNC>;
                 };
         };
@@ -160,9 +160,9 @@
 //   | pg_dn |  7  |  8  |  9  |  .  |    |  *  |  /  |  <  |  >  |mouse_keys|
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp PG_UP &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp SQT    &kp MINUS &kp EXCL &kp LBKT &kp RBKT &kp BSPC
-&mo SYM   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0  &kp PLUS &kp EQUAL &kp LPAR &kp RPAR &kp UNDER
-&kp PG_DN &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp DOT    &kp ASTRK &kp BSLH  &kp LT &kp GT &mouse_keys
+&kp PG_UP &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp SQT     &kp MINUS &kp EXCL &kp LBKT &kp RBKT &kp BSPC
+&mo SYM   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0   &kp PLUS &kp EQUAL &kp LPAR &kp RPAR &kp UNDER
+&kp PG_DN &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT  &kp ASTRK &kp BSLH  &kp LT &kp GT &mouse_keys
 
 &trans &trans &trans    &trans &trans &trans
                         >;
@@ -185,12 +185,12 @@
 
                 vim_layer {
 // -----------------------------------------------------------------------------------------
-//   | ESC |  D  |  O  |  I  |  A   |    |   B  |   E  |  UP  |   W   |  }  |
+//   |  R  |  D  |  O  |  I  |  A   |    |   B  |   E  |  UP  |   W   |  }  |
 //   |  M  | CIW |  R  |  G  | CTRL |    |   F  | LEFT | DOWN | RIGHT |  {  |
 //   |  U  |  `  |  ~  |  Y  |  V   |    |   ^  |   %  |   Z  |   $   |  .  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp ESC &kp D &kp O &vim_i &vim_a       &kp B &kp E &kp UP &kp W &kp RBRC
+&kp R &kp D &kp O &vim_i &vim_a         &kp B &kp E &kp UP &kp W &kp RBRC
 &kp M &CIW &kp R &kp G &kp LCTRL        &kp F &kp LEFT &kp DOWN &kp RIGHT &kp LBRC
 &kp U &kp GRAVE &kp TILDE &kp Y &kp V   &kp CARET &kp PRCNT &kp Z &kp DLLR &kp DOT
                         
