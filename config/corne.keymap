@@ -132,7 +132,7 @@
 //   |  A  |  R  |  S  |  T  |  D  |    |  H  |  N  |  E  |  I  |  O  |
 //   |  Z  |  X  |  C  |  V  |  B  |    |  K  |  M  |  .  |  ,  |  ;  |
 //
-// | LSHIFT:TAB | CMD:SPC | L1:L0 |    | L2 | CTRL:ENT | L3 |
+// | LSHIFT:TAB | CMD:SPC |  L2  |    | L1:L0 | CTRL:ENT | L3 |
 // -----------------------------------------------------------------------------------------
                         display-name = "Base";
                         bindings = <
@@ -151,8 +151,8 @@
 //   | XXX |  ^  |  %  |  #  |  |  |    |  /  |  -  |  {  |  }  |  \  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp GRAVE &kp AT &kp LT &kp GT &kp SQT            &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
-&mo AMPS  &kp DLLR  &kp QMARK &kp UNDER &kp DQT   &kp EXCL &kp EQUAL &kp LPAR &kp RPAR &kp GRAVE
+&kp TILDE &kp AT &kp LT &kp GT &kp SQT            &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
+&kp AMPS  &kp DLLR  &kp QMARK &kp UNDER &kp DQT   &kp EXCL &kp EQUAL &kp LPAR &kp RPAR &kp GRAVE
 &none &kp CARET &kp PRCNT &kp HASH &kp PIPE       &kp FSLH &kp MINUS  &kp LBRC &kp RBRC &kp BSLH
 
 &trans &trans &trans    &trans &trans &trans
@@ -166,9 +166,9 @@
 //   | - |  7  |  8  |  9  |  .  |    |  ,  |   (  |   )  |   [   |  ]  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp KP_ASTERISK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL  &kp CARET &kp LT &kp UP &kp GT &kp BSPC
-&mo KP_PLUS   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0       &kp KP_DIVIDE &kp LEFT &kp DOWN &kp RIGHT &none
-&kp KP_MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT       &kp KP_COMMA &kp KP_LPAR  &kp KP_RPAR &kp LBKT &kp RBKT
+&kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL  &kp CARET &kp LT &kp UP &kp GT &kp BSPC
+&mo PLUS   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0    &kp FSLH &kp LEFT &kp DOWN &kp RIGHT &none
+&kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT    &kp COMMA &kp LPAR  &kp RPAR &kp LBKT &kp RBKT
 
 &trans &trans &trans    &trans &trans &trans
                         >;
