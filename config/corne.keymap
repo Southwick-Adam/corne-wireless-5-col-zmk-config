@@ -10,11 +10,10 @@
 
 // LAYERS
 #define DEFAULT 0
-#define NUM     1
-#define SYM     2
+#define SYM     1
+#define NUM     2
 #define VIM     3
 #define FUNC    4
-#define GAME    5
 
 / {
         chosen {
@@ -72,14 +71,6 @@
                         , <&macro_tap &kp DOT &kp C &kp O &kp M>
                         ;
                 };
-
-                mouse_keys: mouse_keys {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                        = <&macro_tap &kp LALT &kp LALT &kp LALT &kp LALT &kp LALT >
-                        ;
-                }; 
 
                 CIW: CIW {
                 compatible = "zmk,behavior-macro";
@@ -141,7 +132,7 @@
 //   |  A  |  R  |  S  |  T  |  D  |    |  H  |  N  |  E  |  I  |  O  |
 //   |  Z  |  X  |  C  |  V  |  B  |    |  K  |  M  |  .  |  ,  |  ;  |
 //
-// | LSHIFT:TAB | CTRL:SPC | L0:L0 |    | L1:L1 | CMD:ENT | L3 |
+// | LSHIFT:TAB | CMD:SPC | L1:L0 |    | L2 | CTRL:ENT | L3 |
 // -----------------------------------------------------------------------------------------
                         display-name = "Base";
                         bindings = <
@@ -149,35 +140,35 @@
 &kp A &kp R &kp S &kp T &kp D     &kp H &kp N &kp E &kp I &kp O
 &kp Z &kp X &kp C &kp V &kp B     &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
-&mt LSHIFT TAB &mt LCTRL SPACE &mo_to DEFAULT DEFAULT   &mo_to NUM NUM  &mt LCMD RET &go_vim
-                        >;
-                };
-
-                num_layer {
-// -----------------------------------------------------------------------------------------
-//   | pg_up |  1  |  2  |  3  |  '  |    |  -  |  !  |  [  |  ]  | BSP |
-//   |   L2  |  4  |  5  |  6  |  0  |    |  +  |  =  |  (  |  )  |  _  |
-//   | pg_dn |  7  |  8  |  9  |  .  |    |  *  |  /  |  <  |  >  |mouse_keys|
-// -----------------------------------------------------------------------------------------
-                        bindings = <
-&kp PG_UP &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp SQT     &kp MINUS &kp EXCL &kp LBKT &kp RBKT &kp BSPC
-&mo SYM   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0   &kp PLUS &kp EQUAL &kp LPAR &kp RPAR &kp UNDER
-&kp PG_DN &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT  &kp ASTRK &kp BSLH  &kp LT &kp GT &mouse_keys
-
-&trans &trans &trans    &trans &trans &trans
+&mt LSHIFT TAB &mt LCMD SPACE &mo_to NUM NUM   &mo_to SYM DEFAULT  &mt LCTRL RET &go_vim
                         >;
                 };
 
                 sym_layer {
 // -----------------------------------------------------------------------------------------
-//   |                          |    |  #  |  @  |  ?  |  ~  | BSP |
-//   |           trans          |    |  $  |  &  |  {  |  }  |  `  |
-//   |                          |    |  %  |  ^  |  \  |  |  | none|
+//   |  ~  |  @  |  <  |  >  |  '  |    |  *  |  +  |  [  |  ]  | BSP |
+//   |  &  |  $  |  ?  |  _  |  "  |    |  !  |  =  |  (  |  )  |  `  |
+//   | XXX |  ^  |  %  |  #  |  |  |    |  /  |  -  |  {  |  }  |  \  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&none &trans &trans &trans &trans   &kp HASH &kp AT &kp QMARK &kp TILDE &kp BSPC
-&none &trans &trans &trans &trans   &kp DLLR &kp AMPS &kp LBRC &kp RBRC &kp GRAVE
-&none &trans &trans &trans &trans   &kp PRCNT &kp CARET &kp FSLH &kp PIPE &none
+&kp GRAVE &kp AT &kp LT &kp GT &kp SQT            &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
+&mo AMPS  &kp DLLR  &kp QMARK &kp UNDER &kp DQT   &kp EXCL &kp EQUAL &kp LPAR &kp RPAR &kp GRAVE
+&none &kp CARET &kp PRCNT &kp HASH &kp PIPE       &kp FSLH &kp MINUS  &kp LBRC &kp RBRC &kp BSLH
+
+&trans &trans &trans    &trans &trans &trans
+                        >;
+                };
+
+                num_layer {
+// -----------------------------------------------------------------------------------------
+//   | * |  1  |  2  |  3  |  =  |    |  ^  |   <  |  UP  |   >   | BSP |
+//   | + |  4  |  5  |  6  |  0  |    |  /  | LEFT | DOWN | RIGHT |     |
+//   | - |  7  |  8  |  9  |  .  |    |  ,  |   (  |   )  |   [   |  ]  |
+// -----------------------------------------------------------------------------------------
+                        bindings = <
+&kp KP_ASTERISK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL  &kp CARET &kp LT &kp UP &kp GT &kp BSPC
+&mo KP_PLUS   &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0       &kp KP_DIVIDE &kp LEFT &kp DOWN &kp RIGHT &none
+&kp KP_MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT       &kp KP_COMMA &kp KP_LPAR  &kp KP_RPAR &kp LBKT &kp RBKT
 
 &trans &trans &trans    &trans &trans &trans
                         >;
@@ -185,14 +176,14 @@
 
                 vim_layer {
 // -----------------------------------------------------------------------------------------
-//   |  R  |  D  |  O  |  I  |  A   |    |   B  |   E  |  UP  |   W   |  }  |
-//   |  M  | CIW |  R  |  G  | CTRL |    |   F  | LEFT | DOWN | RIGHT |  {  |
-//   |  U  |  `  |  ~  |  Y  |  V   |    |   ^  |   %  |   Z  |   $   |  .  |
+//   |  R  |  D  |  O  |  I  |  A   |    |   B  |   E  |  UP  |   W   | BSP |
+//   |  M  | CIW |  R  |  G  | CTRL |    |   F  | LEFT | DOWN | RIGHT |  }  |
+//   |  U  |  `  |  ~  |  Y  |  V   |    |   ^  |   %  |   Z  |   $   |  {  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp R &kp D &kp O &vim_i &vim_a         &kp B &kp E &kp UP &kp W &kp RBRC
-&kp M &CIW &kp R &kp G &kp LCTRL        &kp F &kp LEFT &kp DOWN &kp RIGHT &kp LBRC
-&kp U &kp GRAVE &kp TILDE &kp Y &kp V   &kp CARET &kp PRCNT &kp Z &kp DLLR &kp DOT
+&kp R &kp D &kp O &vim_i &vim_a         &kp B &kp E &kp UP &kp W &kp BSPC
+&kp M &CIW &kp R &kp G &kp LCTRL        &kp F &kp LEFT &kp DOWN &kp RIGHT &kp RBRC
+&kp U &kp GRAVE &kp TILDE &kp Y &kp V   &kp CARET &kp PRCNT &kp Z &kp DLLR &kp LBRC
                         
 &trans &trans &trans    &trans &trans &kp ESC
                         >;
@@ -202,27 +193,12 @@
 // -----------------------------------------------------------------------------------------
 //   | ESC | fname | lname | email | . |     | BRIGHT_DN | BRIGHT_UP | VOL_DN | VOL_UP | MUTE |
 //
-//                                                                               | L5 |
+//                                                                               
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp ESC &fname &lname &email &none    &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE
-&trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans    &trans &trans &trans &trans &to GAME
-
-&trans &trans &trans    &trans &trans &trans
-                        >;
-                };
-
-                game_layer {
-// -----------------------------------------------------------------------------------------
-//   | ESC  |  Q  |  W  |  E  |  R  |    |   1  |   2  |  UP  |   3   |  4   |
-//   |   .  |  A  |  S  |  D  |  F  |    |   .  | LEFT | DOWN | RIGHT |  5   |
-//   |LSHIFT|  Z  |  X  |  C  |  V  |    |   I  |   J  |   M  |   T   |  6   |
-// -----------------------------------------------------------------------------------------
-                        bindings = <
-&kp ESC &kp Q &kp W &kp E &kp R    &kp N1 &kp N2 &kp UP &kp N3 &kp N4
-&none &kp A &kp S &kp D &kp F      &none &kp LEFT &kp DOWN &kp RIGHT &kp N5
-&kp LSHFT &kp Z &kp X &kp C &kp V  &kp I &kp J &kp M &kp T &kp N6
+&none &none &none &none &none         &none &none &none &none &none
+&none &none &none &none &none         &none &none &none &none &none
 
 &trans &trans &trans    &trans &trans &trans
                         >;
