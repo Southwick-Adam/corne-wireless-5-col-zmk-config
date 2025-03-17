@@ -150,7 +150,7 @@
 &mt LALT A &mt LCTRL R &mt LSHFT S &mt LCMD T &kp D     &kp H &mt RCMD N &mt RSHFT E &mt RCTRL I &mt RALT O
 &kp Z &kp X &kp C &kp V &kp B                           &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
-&mt TAB &kp SPACE &mo_to NUM NUM   &mo_to SYM DEFAULT  &kp RET &go_vim
+&kp TAB &kp SPACE &mo_to NUM NUM   &mo_to SYM DEFAULT  &kp RET &go_vim
                         >;
                 };
 
