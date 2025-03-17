@@ -19,6 +19,7 @@
 
                 hold_tap_config: hold_tap_config {
                         compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
                         flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap = <0>;
