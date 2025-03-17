@@ -16,6 +16,17 @@
 
 
         behaviors {
+
+                hold_tap_config {
+                        compatible = "zmk,behavior-hold-tap";
+                        flavor = "balanced";
+                        tapping-term-ms = <200>;
+                        quick-tap = <0>;
+                        ignore-mod-tap-interrupt = <true>;
+                };
+
+
+
                 kp_to: kp_to {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
@@ -133,6 +144,8 @@
                 };
         };
 
+        hold_tap = &hold_tap_config;
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -144,7 +157,6 @@
 //
 //             | TAB | SPC | L2:L2 |    | L1:L0 | ENT | L3 |
 // -----------------------------------------------------------------------------------------
-                        display-name = "Base";
                         bindings = <
 &kp Q &kp W &kp F &kp P &kp G                           &kp J &kp L &kp U &kp Y &kp BSPC
 &mt LALT A &mt LCTRL R &mt LSHFT S &kp T &kp D     &kp H &kp N &mt RSHFT E &mt RCTRL I &mt RALT O
@@ -177,7 +189,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                     &kp CARET &kp LT &kp UP &kp GT &kp BSPC
-&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &mt LCMD KP_N6 &kp KP_N0   &kp FSLH &mt RCMD LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
+&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0   &kp FSLH &kp LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
 &kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT                       &kp COMMA &kp LPAR &kp RPAR &kp LBKT &kp RBKT
 
 &trans &trans &trans    &trans &trans &trans
