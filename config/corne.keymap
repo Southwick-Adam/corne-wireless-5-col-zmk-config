@@ -17,12 +17,12 @@
 
         behaviors {
 
-                hold_tap_config {
+                hold_tap_config: hold_tap_config {
                         compatible = "zmk,behavior-hold-tap";
                         flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap = <0>;
-                        ignore-mod-tap-interrupt = <true>;
+                        ignore-mod-tap-interrupt = true;
                 };
 
 
