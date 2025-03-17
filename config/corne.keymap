@@ -22,7 +22,7 @@
                         flavor = "balanced";
                         tapping-term-ms = <200>;
                         quick-tap = <0>;
-                        ignore-mod-tap-interrupt = true;
+                        ignore-mod-tap-interrupt;
                 };
 
 
