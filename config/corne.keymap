@@ -19,13 +19,11 @@
 
                 hold_tap_config: hold_tap_config {
                         compatible = "zmk,behavior-hold-tap";
-                        #binding-cells = <2>;
-                        //flavor = "balanced";
+                        #binding-cells = <1>;
+                        flavor = "balanced";
                         tapping-term-ms = <200>;
                         bindings = <&mt>;
                 };
-
-
 
                 kp_to: kp_to {
                         compatible = "zmk,behavior-hold-tap";
