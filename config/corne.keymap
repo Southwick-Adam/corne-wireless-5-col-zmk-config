@@ -141,8 +141,6 @@
                 };
         };
 
-        hold_tap = &hold_tap_config;
-
         keymap {
                 compatible = "zmk,keymap";
 
