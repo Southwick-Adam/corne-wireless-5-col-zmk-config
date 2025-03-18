@@ -17,12 +17,11 @@
 
         behaviors {
 
-                hold_tap_config: hold_tap_config {
+                hr: hr {
                         compatible = "zmk,behavior-hold-tap";
-                        #binding-cells = <1>;
-                        flavor = "balanced";
+                        #binding-cells = <2>;
+                        bindings = <&kp>, <&kp>;
                         tapping-term-ms = <200>;
-                        bindings = <&mt>;
                 };
 
                 kp_to: kp_to {
@@ -157,7 +156,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp Q &kp W &kp F &kp P &kp G                           &kp J &kp L &kp U &kp Y &kp BSPC
-&mt LALT A &mt LCTRL R &mt LSHFT S &kp T &kp D     &kp H &kp N &mt RSHFT E &mt RCTRL I &mt RALT O
+&hr LALT A &hr LCTRL R &hr LSHFT S &kp T &kp D     &kp H &kp N &hr RSHFT E &hr RCTRL I &hr RALT O
 &kp Z &kp X &kp C &kp V &kp B                           &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
 &kp TAB &mt LCMD SPACE &mo_to NUM NUM   &mo_to SYM DEFAULT &mt RCMD RET &go_vim
@@ -172,7 +171,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp TILDE &kp AT &kp LT &kp GT &kp SQT                                  &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
-&mt LALT AMPS &mt LCTRL DLLR  &mt LSHFT QMARK &kp UNDER &kp DQT    &kp EXCL &kp EQUAL &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
+&hr LALT AMPS &hr LCTRL DLLR  &hr LSHFT QMARK &kp UNDER &kp DQT    &kp EXCL &kp EQUAL &hr RSHFT LPAR &hr RCTRL RPAR &hr RALT GRAVE
 &none &kp CARET &kp PRCNT &kp HASH &kp PIPE                             &kp FSLH &kp MINUS  &kp LBRC &kp RBRC &kp BSLH
 
 &trans &trans &trans    &trans &trans &trans
@@ -187,7 +186,7 @@
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                     &kp CARET &kp LT &kp UP &kp GT &kp BSPC
-&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0   &kp FSLH &kp LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
+&hr LALT PLUS &hr LCTRL KP_N4 &hr LSHFT KP_N5 &kp KP_N6 &kp KP_N0   &kp FSLH &kp LEFT &hr RSHFT DOWN &hr RCTRL RIGHT &hr RALT
 &kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT                       &kp COMMA &kp LPAR &kp RPAR &kp LBKT &kp RBKT
 
 &trans &trans &trans    &trans &trans &trans
