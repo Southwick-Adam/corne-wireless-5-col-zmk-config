@@ -153,13 +153,13 @@
                 sym_layer {
 // -----------------------------------------------------------------------------------------
 //   |  ~  |  @  |  <  |  >  |  '  |    |  *  |  +  |  [  |  ]  | BSP |
-//   |  &  |  $  |  ?  |  _  |  "  |    |  !  |  =  |  (  |  )  |  `  |
-//   | XXX |  ^  |  %  |  #  |  |  |    |  /  |  -  |  {  |  }  |  \  |
+//   |  &  |  !  |  ?  |  _  |  "  |    |  =  |  -  |  (  |  )  |  `  |
+//   | XXX |  ^  |  %  |  #  |  |  |    |  $  |  /  |  {  |  }  |  \  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
 &kp TILDE &kp AT &kp LT &kp GT &kp SQT                                  &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
-&mt LALT AMPS &mt LCTRL DLLR  &mt LSHFT QMARK &kp UNDER &kp DQT    &kp EXCL &kp EQUAL &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
-&none &kp CARET &kp PRCNT &kp HASH &kp PIPE                             &kp FSLH &kp MINUS  &kp LBRC &kp RBRC &kp BSLH
+&mt LALT EXCL &mt LCTRL AMPS &mt LSHFT QMARK &kp UNDER &kp DQT         &kp EQUAL &kp MINUS &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
+&none &kp CARET &kp PRCNT &kp HASH &kp PIPE                             &kp DLLR &kp FSLH &kp LBRC &kp RBRC &kp BSLH
 
 &trans &trans &trans    &trans &trans &trans
                         >;
