@@ -79,6 +79,38 @@
                         ;
                 };
 
+                CE: CE {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp C &kp E >
+                        ;
+                };
+
+                CDOLL: CDOLL {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp C &kp DLLR >
+                        ;
+                };
+
+                CC: CC {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp C &kp C >
+                        ;
+                };
+
+                YY: YY {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                        = <&macro_tap &kp Y &kp Y >
+                        ;
+                };
+
                 vim_i: vim_i {
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
@@ -95,11 +127,11 @@
                         ;
                 };
 
-                vim_a: vim_a {
+                vim_o: vim_o {
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
-                        = <&macro_tap &kp A &to DEFAULT >
+                        = <&macro_tap &kp o &to DEFAULT >
                         ;
                 };
 
@@ -142,9 +174,9 @@
 //             | TAB | SPC | L2:L2 |    | L1:L0 | ENT | L3 |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp Q &kp W &kp F &kp P &kp G                           &kp J &kp L &kp U &kp Y &kp BSPC
+&kp Q &kp W &kp F &kp P &kp G                      &kp J &kp L &kp U &kp Y &kp BSPC
 &mt LALT A &mt LCTRL R &mt LSHFT S &kp T &kp D     &kp H &kp N &mt RSHFT E &mt RCTRL I &mt RALT O
-&kp Z &kp X &kp C &kp V &kp B                           &kp K &kp M &kp DOT &kp COMMA &kp SEMI
+&kp Z &kp X &kp C &kp V &kp B                      &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
 &kp TAB &mt LCMD SPACE &to NUM   &mo_to SYM DEFAULT &mt RCMD RET &go_vim
                         >;
@@ -152,14 +184,14 @@
 
                 sym_layer {
 // -----------------------------------------------------------------------------------------
-//   |  ~  |  @  |  <  |  >  |  '  |    |  *  |  +  |  [  |  ]  | BSP |
+//   | ESC |  @  |  <  |  >  |  '  |    |  *  |  +  |  [  |  ]  | BSP |
 //   |  &  |  !  |  ?  |  _  |  "  |    |  =  |  -  |  (  |  )  |  `  |
-//   | XXX |  ^  |  %  |  #  |  |  |    |  $  |  /  |  {  |  }  |  \  |
+//   |  ~  |  ^  |  %  |  #  |  |  |    |  $  |  /  |  {  |  }  |  \  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp TILDE &kp AT &kp LT &kp GT &kp SQT                                  &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
-&mt LALT EXCL &mt LCTRL AMPS &mt LSHFT QMARK &kp UNDER &kp DQT         &kp EQUAL &kp MINUS &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
-&none &kp CARET &kp PRCNT &kp HASH &kp PIPE                             &kp DLLR &kp FSLH &kp LBRC &kp RBRC &kp BSLH
+&kp ESC &kp AT &kp LT &kp GT &kp SQT                               &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
+&mt LALT EXCL &mt LCTRL AMPS &mt LSHFT QMARK &kp UNDER &kp DQT     &kp EQUAL &kp MINUS &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
+&kp TILDE &kp CARET &kp PRCNT &kp HASH &kp PIPE                    &kp DLLR &kp FSLH &kp LBRC &kp RBRC &kp BSLH
 
 &trans &trans &trans    &trans &trans &trans
                         >;
@@ -167,14 +199,14 @@
 
                 num_layer {
 // -----------------------------------------------------------------------------------------
-//   | * |  1  |  2  |  3  |  =  |    |  ^  |   <  |  UP  |   >   | BSP |
-//   | + |  4  |  5  |  6  |  0  |    |  /  | LEFT | DOWN | RIGHT |     |
-//   | - |  7  |  8  |  9  |  .  |    |  ,  |   (  |   )  |   [   |  ]  |
+//   | * |  1  |  2  |  3  |  =  |    |     |      |  UP  |       | BSP |
+//   | + |  4  |  5  |  6  |  0  |    |     | LEFT | DOWN | RIGHT |     |
+//   | - |  7  |  8  |  9  |  .  |    |     |      |      |       |     |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                     &kp CARET &kp LT &kp UP &kp GT &kp BSPC
-&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0   &kp FSLH &kp LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
-&kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT                       &kp COMMA &kp LPAR &kp RPAR &kp LBKT &kp RBKT
+&kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                 &none &none &kp UP &none &kp BSPC
+&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0    &none &kp LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
+&kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT                   &none &none &none &none &none
 
 &trans &trans &to DEFAULT  &trans &trans &trans
                         >;
@@ -182,14 +214,14 @@
 
                 vim_layer {
 // -----------------------------------------------------------------------------------------
-//   |  R  |  D  |  O  |  M  |  A   |    |  B  |  E  |  K  |  W  | BSP |
-//   | ALT | CIW |  R  |  G  | CTRL |    |  F  |  H  |  J  |  L  |  }  |
-//   |  U  |  `  |  ~  |  Y  |  V   |    |  ^  |  %  |  Z  |  $  |  {  |
+//   |  U |  D  |  O  |  F  |  J   |    |  {  |  B  |  K  |  E  |  }  |
+//   | CE | CIW |  R  |  G  | CTRL |    |  X  |  H  |  J  |  L  |  G  |
+//   | C$ | CC  |  P  |  YY |  V   |    |  .  |  ^  |  Z  |  $  |  M  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp R &kp D &kp O &vim_i &vim_a         &kp B &kp E &kp K &kp W &kp BSPC
-&kp LALT &CIW &kp R &kp G &kp LCTRL     &kp F &kp H &kp J &kp L &kp RBRC
-&kp U &kp GRAVE &kp TILDE &kp Y &kp V   &kp CARET &kp PRCNT &kp Z &kp DLLR &kp LBRC
+&kp U &kp D &vim_o &kp F &kp J    &kp LBRC &kp B &kp K &kp E &kp RBRC
+&CE &CIW &kp R &kp G &kp LCTRL    &kp X &kp H &kp J &kp L &kp G
+&CDOLL &CC &kp P &YY &kp V        &kp DOT &kp CARET &kp Z &kp DLLR &kp M
                         
 &trans &trans &vim_i_2    &vim_i &trans &kp ESC
                         >;
