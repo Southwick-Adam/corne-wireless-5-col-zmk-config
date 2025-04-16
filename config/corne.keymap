@@ -131,7 +131,7 @@
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
-                        = <&macro_tap &kp o &to DEFAULT >
+                        = <&macro_tap &kp O &to DEFAULT >
                         ;
                 };
 
