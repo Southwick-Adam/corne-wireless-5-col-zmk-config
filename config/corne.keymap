@@ -119,11 +119,11 @@
                         ;
                 };
 
-                vim_i_2: vim_i_2 {
+                vim_a: vim_a {
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings
-                        = <&macro_tap &kp I &to NUM >
+                        = <&macro_tap &kp A &to DEFAULT >
                         ;
                 };
 
@@ -150,14 +150,14 @@
                 combo_caps {
                 timeout-ms = <50>;
                 layers = <0>;
-                key-positions = <30 35>;
+                key-positions = <32 33>;
                 bindings = <&kp CAPS>;
                 };
 
                 combo_func {
                 timeout-ms = <50>;
-                layers = <0 1 2 3 5>;
-                key-positions = <32 33>;
+                layers = <0>;
+                key-positions = <30 35>;
                 bindings = <&mo FUNC>;
                 };
         };
@@ -178,20 +178,20 @@
 &mt LALT A &mt LCTRL R &mt LSHFT S &kp T &kp D     &kp H &kp N &mt RSHFT E &mt RCTRL I &mt RALT O
 &kp Z &kp X &kp C &kp V &kp B                      &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
-&kp TAB &mt LCMD SPACE &to NUM   &mo_to SYM DEFAULT &mt RCMD RET &go_vim
+&kp TAB &mt LCMD SPACE &mo SYM   &mo NUM &mt RCMD RET &go_vim
                         >;
                 };
 
                 sym_layer {
 // -----------------------------------------------------------------------------------------
-//   | ESC |  @  |  <  |  >  |  '  |    |  *  |  +  |  [  |  ]  | BSP |
-//   |  &  |  !  |  ?  |  _  |  "  |    |  =  |  -  |  (  |  )  |  `  |
-//   |  ~  |  ^  |  %  |  #  |  |  |    |  $  |  /  |  {  |  }  |  \  |
+//   | ESC |  <  |  >  |  "  |  @  |    |  *  |  -  |  [  |  ]  | BSP |
+//   |  !  |  &  |  ?  |  '  |  +  |    |  =  |  _  |  (  |  )  |  /  |
+//   |  ~  |  ^  |  {  |  }  |  |  |    |  $  |  `  |  #  |  %  |  \  |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp ESC &kp AT &kp LT &kp GT &kp SQT                               &kp ASTRK &kp PLUS &kp LBKT &kp RBKT &kp BSPC
-&mt LALT EXCL &mt LCTRL AMPS &mt LSHFT QMARK &kp UNDER &kp DQT     &kp EQUAL &kp MINUS &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT GRAVE
-&kp TILDE &kp CARET &kp PRCNT &kp HASH &kp PIPE                    &kp DLLR &kp FSLH &kp LBRC &kp RBRC &kp BSLH
+&kp ESC &kp LT &kp GT &kp DQT &kp AT                              &kp ASTRK &kp MINUS &kp LBKT &kp RBKT &kp BSPC
+&mt LALT EXCL &mt LCTRL AMPS &mt LSHFT QMARK &kp SQT &kp PLUS    &kp EQUAL &kp UNDER &mt RSHFT LPAR &mt RCTRL RPAR &mt RALT FSLH
+&kp TILDE &kp CARET &kp LBRC &kp RBRC &kp PIPE                    &kp DLLR &kp GRAVE &kp HASH &kp PRCNT &kp BSLH
 
 &trans &trans &trans    &trans &trans &trans
                         >;
@@ -199,16 +199,16 @@
 
                 num_layer {
 // -----------------------------------------------------------------------------------------
-//   | * |  1  |  2  |  3  |  =  |    |     |      |  UP  |       | BSP |
-//   | + |  4  |  5  |  6  |  0  |    |     | LEFT | DOWN | RIGHT |     |
-//   | - |  7  |  8  |  9  |  .  |    |     |      |      |       |     |
+//   | * |  1  |  2  |  3  |  =  |    |  (  |   )  |  UP  |       | BSP |
+//   | . |  4  |  5  |  6  |  0  |    |  /  | LEFT | DOWN | RIGHT |     |
+//   | - |  7  |  8  |  9  |  +  |    |     |      |      |       |     |
 // -----------------------------------------------------------------------------------------
                         bindings = <
-&kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                 &none &none &kp UP &none &kp BSPC
-&mt LALT PLUS &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0    &none &kp LEFT &mt RSHFT DOWN &mt RCTRL RIGHT &kp RALT
-&kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT                   &none &none &none &none &none
+&kp ASTRK &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_EQUAL                   &kp LPAR &kp RPAR &kp UP &none &kp BSPC
+&mt LALT KP_DOT &mt LCTRL KP_N4 &mt LSHFT KP_N5 &kp KP_N6 &kp KP_N0    &kp FSLH &kp LEFT &kp DOWN &kp RIGHT &kp RALT
+&kp MINUS &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp PLUS                       &none &none &kp RSHFT &kp RCTRL &kp RALT
 
-&trans &trans &to DEFAULT  &trans &trans &trans
+&trans &trans &trans  &trans &trans &trans
                         >;
                 };
 
@@ -223,7 +223,7 @@
 &CE &CIW &kp R &kp G &kp LCTRL    &kp X &kp H &kp J &kp L &kp G
 &CDOLL &CC &kp P &YY &kp V        &kp DOT &kp CARET &kp Z &kp DLLR &kp M
                         
-&trans &trans &vim_i_2    &vim_i &trans &kp ESC
+&trans &trans &vim_a    &vim_i &trans &kp ESC
                         >;
                 };
 
