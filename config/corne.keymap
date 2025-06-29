@@ -178,7 +178,7 @@
 &mt LALT A &mt LCTRL R &mt LSHFT S &kp T &kp D     &kp H &kp N &mt RSHFT E &mt RCTRL I &mt RALT O
 &kp Z &kp X &kp C &kp V &kp B                      &kp K &kp M &kp DOT &kp COMMA &kp SEMI
 
-&kp TAB &mt LCMD SPACE &mo SYM   &mo NUM &mt RCMD RET &go_vim
+&kp TAB &mt LCMD RET &mo SYM   &mo NUM &mt RCMD SPACE &go_vim
                         >;
                 };
 
